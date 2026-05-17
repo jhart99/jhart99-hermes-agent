@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install additional Python dependencies in the existing venv
 COPY requirements.txt .
-RUN /opt/hermes/.venv/bin/pip install --no-cache-dir -r requirements.txt && \
+RUN /usr/local/bin/uv pip install --no-cache-dir -r requirements.txt && \
     rm requirements.txt
 
 # Set up environment variables
