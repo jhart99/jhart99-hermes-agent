@@ -9,9 +9,13 @@ The goal of this project is to create a robust, automated pipeline for building 
 ### Key Features
 
 - **Base Image:** Starts from the official Nous Research Hermes Agent Docker images.
-- **Custom Dependencies:** Extends the base image with a curated set of additional tools and libraries.
+- **Custom Dependencies:** Includes pre-installed tools for deployment and development:
+  - **GitHub CLI (gh)**: For interacting with GitHub from within the agent.
+  - **Docker CLI**: For managing containers (requires `/var/run/docker.sock` mount).
+  - **Go**: Full Go toolchain for building and running Go-based tools.
+- **Non-Root Execution:** Optimized for Kubernetes with a default non-root user (`hermes`) and a world-writable `/opt/data` directory for persistence.
 - **Multi-Architecture Builds:** Supports both `amd64` and `arm64` architectures.
-- **Automated CI/CD:** Utilizes GitHub Actions for building and pushing images.
+- **Automated CI/CD:** Utilizes GitHub Actions for building and pushing images with OCI-compliant metadata and annotations.
 - **Container Registry:** Images are hosted on the GitHub Container Registry (`ghcr.io`).
 - **Dependency Management:** Integrated with Renovate for automated package and base image updates.
 

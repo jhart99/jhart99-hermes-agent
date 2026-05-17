@@ -12,5 +12,7 @@ This file contains foundational mandates for the `jhart99-hermes-agent` project.
 
 ## Development Workflow
 
+- **Branching Strategy:** All changes must be made in feature or chore branches. Direct pushes to `main` are prohibited (except for initial setup).
+- **Pull Requests:** All changes must be reviewed and merged via Pull Requests.
 - **Dockerfiles:** Ensure multi-arch compatibility in all Dockerfile instructions.
 - **CI/CD:** GitHub Action workflows should trigger on pushes to the main branch and for pull requests.
