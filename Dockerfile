@@ -17,7 +17,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tar \
     build-essential \
     procps \
+    libolm-dev \
     && rm -rf /var/lib/apt/lists/*
+
+# Install additional Python dependencies in the existing venv
+COPY requirements.txt .
+RUN /opt/hermes/.venv/bin/pip install --no-cache-dir -r requirements.txt && \
+    rm requirements.txt
 
 # Set up environment variables
 ENV PATH="/usr/local/go/bin:${PATH}"
