@@ -1,5 +1,5 @@
 # Use the specific pinned version of Hermes Agent as the base
-FROM nousresearch/hermes-agent:v2026.5.16@sha256:b6e41c155d6bfce5ad83c5d0fec670086db8a43250e4511c9474134be5482d33
+FROM nousresearch/hermes-agent:v2026.5.29@sha256:192a40783e9227b5f162b76af4d133050557adebd46e1c9cb40cb79a1317a9f7
 
 LABEL org.opencontainers.image.description="Customized Hermes Agent image with additional deployment tools (gh, docker, go) and optimized for non-root execution in Kubernetes."
 LABEL org.opencontainers.image.source="https://github.com/jhart99/jhart99-hermes-agent"
