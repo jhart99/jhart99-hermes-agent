@@ -30,7 +30,7 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 
 # Install GitHub CLI
 # renovate: datasource=github-releases depName=cli/cli
-RUN GH_VERSION="2.93.0" && \
+RUN GH_VERSION="2.94.0" && \
     case "${TARGETARCH}" in \
         "amd64") GH_ARCH="amd64" ;; \
         "arm64") GH_ARCH="arm64" ;; \
