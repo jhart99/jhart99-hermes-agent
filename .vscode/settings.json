@@ -2,5 +2,6 @@
     "debug.javascript.defaultRuntimeExecutable": {
         "pwa-node": "/home/jhart/.local/share/mise/shims/node"
     },
-    "python.defaultInterpreterPath": "/home/jhart/home-ops/.venv"
+    "python.defaultInterpreterPath": "/home/jhart/home-ops/.venv",
+    "sops.binPath": "/home/jhart/.local/share/mise/shims/sops"
 }
