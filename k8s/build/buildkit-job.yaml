@@ -1,0 +1,78 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: buildkit-hermes-agent-build
+  namespace: development
+spec:
+  backoffLimit: 1
+  template:
+    spec:
+      restartPolicy: Never
+      
+      # 1. Init container fetches the git context
+      initContainers:
+      - name: fetch-context
+        image: alpine/git:latest
+        command:
+        - git
+        - clone
+        - "https://github.com/jhart99/jhart99-hermes-agent.git"
+        - /workspace
+        volumeMounts:
+        - name: workspace
+          mountPath: /workspace
+
+      # 2. Main container builds and pushes the image
+      containers:
+      - name: buildkit
+        image: moby/buildkit:rootless
+        env:
+        - name: BUILDKITD_FLAGS
+          value: "--oci-worker-no-process-sandbox"
+        command:
+        - buildctl-daemonless.sh
+        args:
+        - build
+        - --frontend
+        - dockerfile.v0
+        - --export-cache
+        - type=registry,ref=ghcr.io/jhart99/jhart99-hermes-agent:buildcache,mode=max
+        - --import-cache
+        - type=registry,ref=ghcr.io/jhart99/jhart99-hermes-agent:buildcache
+        - --local
+        - context=/workspace
+        - --local
+        - dockerfile=/workspace
+        - --output
+        - type=image,name=ghcr.io/jhart99/jhart99-hermes-agent:v2026.6.5,push=true
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+          # Modern K8s (1.30+) approach to disable AppArmor and Seccomp 
+          # to allow unprivileged user namespaces
+          seccompProfile:
+            type: Unconfined
+          appArmorProfile:
+            type: Unconfined
+        resources:
+          requests:
+            cpu: "2"
+            memory: "4Gi"
+          limits:
+            cpu: "8"
+            memory: "32Gi"
+        volumeMounts:
+        - name: workspace
+          mountPath: /workspace
+        - name: build-secret
+          mountPath: /home/user/.docker
+      
+      volumes:
+      - name: workspace
+        emptyDir: {}
+      - name: build-secret
+        secret:
+          secretName: ghcr-secret
+          items:
+            - key: .dockerconfigjson
+              path: config.json

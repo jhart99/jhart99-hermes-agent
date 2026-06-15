@@ -5,3 +5,4 @@ Dockerfile
 .dockerignore
 node_modules
 age.key
+GEMINI.md
