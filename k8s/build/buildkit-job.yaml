@@ -43,6 +43,8 @@ spec:
         - context=/workspace
         - --local
         - dockerfile=/workspace
+        - --opt
+        - platform=linux/amd64,linux/arm64
         - --output
         - type=image,name=ghcr.io/jhart99/jhart99-hermes-agent:v2026.6.5,push=true
         securityContext:
