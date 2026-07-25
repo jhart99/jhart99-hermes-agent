@@ -22,6 +22,15 @@
       "matchStrings": [
         "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s.*?_VERSION=\"(?<currentValue>.*?)\""
       ]
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "^k8s/build/buildkit-job\\.yaml$"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s+-\\s+'type=image,\"name=ghcr\\.io/jhart99/jhart99-hermes-agent:(?<currentValue>[^,\"]+)"
+      ]
     }
   ]
 }
