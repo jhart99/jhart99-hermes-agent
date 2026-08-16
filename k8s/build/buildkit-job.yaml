@@ -47,7 +47,7 @@ spec:
         - platform=linux/amd64,linux/arm64
         - --output
         # renovate: datasource=docker depName=nousresearch/hermes-agent
-        - 'type=image,"name=ghcr.io/jhart99/jhart99-hermes-agent:v2026.8.3,ghcr.io/jhart99/jhart99-hermes-agent:latest",push=true'
+        - 'type=image,"name=ghcr.io/jhart99/jhart99-hermes-agent:v2026.8.13,ghcr.io/jhart99/jhart99-hermes-agent:latest",push=true'
         securityContext:
           runAsUser: 1000
           runAsGroup: 1000
