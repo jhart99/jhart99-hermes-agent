@@ -3,7 +3,7 @@ FROM nousresearch/hermes-agent:v2026.8.27
 
 LABEL org.opencontainers.image.description="Customized Hermes Agent image with additional deployment tools (gh, docker, go) and optimized for non-root execution in Kubernetes."
 LABEL org.opencontainers.image.source="https://github.com/jhart99/jhart99-hermes-agent"
-LABEL org.opencontainers.image.base.name="docker.io/nousresearch/hermes-agent:v2026.8.18"
+LABEL org.opencontainers.image.base.name="docker.io/nousresearch/hermes-agent:v2026.8.27"
 
 ARG TARGETARCH
 
