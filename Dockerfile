@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install additional Python dependencies in the existing venv
 COPY requirements.txt .
-RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
+RUN curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="/use/local/bin" sh && \
     /usr/local/bin/uv pip install --no-cache-dir -r requirements.txt && \
     rm requirements.txt
 
