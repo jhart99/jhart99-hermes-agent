@@ -30,7 +30,7 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 
 # Install GitHub CLI
 # renovate: datasource=github-releases depName=cli/cli
-RUN GH_VERSION="2.101.0" && \
+RUN GH_VERSION="2.102.0" && \
     case "${TARGETARCH}" in \
         "amd64") GH_ARCH="amd64" ;; \
         "arm64") GH_ARCH="arm64" ;; \
@@ -55,7 +55,7 @@ RUN DOCKER_VERSION="29.4.0" && \
 
 # Install Go
 # renovate: datasource=golang-version depName=go
-RUN GO_VERSION="1.27.1" && \
+RUN GO_VERSION="1.27.2" && \
     case "${TARGETARCH}" in \
         "amd64") GO_ARCH="amd64" ;; \
         "arm64") GO_ARCH="arm64" ;; \
