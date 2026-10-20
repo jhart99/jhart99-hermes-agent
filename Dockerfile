@@ -56,7 +56,7 @@ RUN DOCKER_VERSION="29.4.0" && \
 
 # Install Go
 # renovate: datasource=golang-version depName=go
-RUN GO_VERSION="1.27.2" && \
+RUN GO_VERSION="1.27.3" && \
     case "${TARGETARCH}" in \
         "amd64") GO_ARCH="amd64" ;; \
         "arm64") GO_ARCH="arm64" ;; \
